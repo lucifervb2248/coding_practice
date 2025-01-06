@@ -1,0 +1,31 @@
+class Solution {
+  public:
+    vector<int> sumClosest(vector<int>& arr, int target) {
+        // code here
+        sort(arr.begin(),arr.end());
+        int diff=INT_MAX;
+        vector<int> res;
+        int i=0,j=arr.size()-1;
+        while(i!=j){
+            int csum=arr[j]+arr[i];
+            int cdiff=abs(target-csum);
+            if(cdiff<diff){
+                diff=cdiff;
+                res={arr[i],arr[j]};
+                
+                
+            }
+             if (csum < target)
+            i++;
+
+        
+        else if (csum > target)
+            j--;
+
+        
+        else
+            return res;
+            
+        }
+    }
+};
