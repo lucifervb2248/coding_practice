@@ -1,0 +1,18 @@
+ int maxWater(vector<int> &arr) {
+        // code here
+        int left=0;
+        int right=arr.size()-1;
+        int maxarea=0;
+        while(left<right){
+            int c=min(arr[left],arr[right]);
+            int area=(c*(right-left));
+            maxarea=max(area,maxarea);
+            if(c==arr[left]){
+                left++;
+            }
+            else{
+                right--;
+            }
+        }
+        return maxarea;
+    }
