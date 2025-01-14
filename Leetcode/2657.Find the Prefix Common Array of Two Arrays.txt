@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<int> findThePrefixCommonArray(vector<int>& A, vector<int>& B) {
+        vector<int> res;
+        vector<int> c (A.size()+1,0);
+        int ans=0;
+        for(int i=0;i<A.size();i++){
+        
+            c[A[i]]++;
+            c[B[i]]++;
+            if(c[A[i]]==2){
+                ans++;
+            }
+            if(c[B[i]]==2 && A[i]!=B[i]){
+                ans++;
+            }
+            res.push_back(ans);
+        }
+        return res;
+        
+    }
+};
