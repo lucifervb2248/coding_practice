@@ -1,0 +1,20 @@
+int findEquilibrium(vector<int> &arr) {
+        // code here
+        vector<int> f(arr.size(),0);
+        int sum=0;
+        for(int i=0;i<arr.size();i++){
+            sum+=arr[i];
+            f[i]=sum;
+            
+            
+        }
+        sum=0;
+        for(int i=arr.size()-1;i>0;i--){
+            sum+=arr[i];
+            if(sum==f[i-2]){
+                return (i-1);
+            }
+        }
+        return -1;
+        
+    }
