@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int firstCompleteIndex(vector<int>& arr, vector<vector<int>>& mat) {
+        vector<int> row (mat.size(),0);
+        vector<int> col (mat[0].size(),0);
+        vector<int> rc (arr.size()+1,0);
+        vector<int> cc (arr.size()+1,0);
+        for(int i=0;i<mat.size();i++){
+            for(int j=0;j<mat[0].size();j++){
+                int val=mat[i][j];
+                rc[val]=i;
+                cc[val]=j;
+            }
+        }
+        for(int i=0;i<arr.size();i++){
+            row[rc[arr[i]]]++;
+            col[cc[arr[i]]]++;
+            if(row[rc[arr[i]]]==mat[0].size() || col[cc[arr[i]]]==mat.size()){
+                return i;
+            }
+        }
+        return 0;
+    }
+};
