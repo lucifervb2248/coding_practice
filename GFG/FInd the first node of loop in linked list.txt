@@ -1,0 +1,25 @@
+ Node* findFirstNode(Node* head) {
+        // your code here
+        unordered_set<Node*> st; 
+    
+    Node* currNode = head; 
+    
+    // Traverse the linked list
+    while (currNode != nullptr) {
+      
+        // If the current node is already in the HashSet,
+        // then this is the starting node of the loop
+        if (st.find(currNode) != st.end()) {
+            return currNode;
+        }
+        
+        // If not, add the current node to the HashSet
+        st.insert(currNode);
+        
+        // Move to the next node
+        currNode = currNode->next;
+    }
+    
+    // If no loop found, return nullptr
+    return nullptr;
+    }
