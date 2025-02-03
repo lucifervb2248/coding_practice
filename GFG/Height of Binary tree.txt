@@ -1,0 +1,12 @@
+ int height(Node* node) {
+        // code here
+        
+       if (node == nullptr)
+        return -1;
+
+    // compute the height of left and right subtrees
+    int lHeight = height(node->left);
+    int rHeight = height(node->right);
+
+    return max(lHeight, rHeight) + 1;
+    }
