@@ -1,0 +1,12 @@
+void mirror(Node* root) {
+        // code here
+         if (root == nullptr)
+        return ;
+    
+    // Invert the left and right subtree
+    mirror(root->left);
+    mirror(root->right);
+  
+    // Swap the left and right subtree
+    swap(root->left, root->right);
+    }

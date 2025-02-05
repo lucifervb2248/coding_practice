@@ -1,0 +1,28 @@
+class Solution {
+public:
+    bool areAlmostEqual(string s1, string s2) {
+        char t1,t2;
+        int c=0;
+        for(int i=0;i<s1.length();i++){
+            if(c>=3){
+                return false;
+            }
+            if(s1[i]!=s2[i]){
+                if(c==0){
+                    t1=s1[i];
+                    t2=s2[i];
+                }
+                else{
+                    if(t1!=s2[i] || t2!=s1[i] ){
+                        return false;
+                    }
+                }
+                c++;
+            }
+        }
+        if(c==1){
+            return false;
+        }
+        return true;
+    }
+};
