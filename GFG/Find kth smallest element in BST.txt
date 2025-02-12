@@ -1,0 +1,27 @@
+ int kthSmallestRecur(Node* root, int &cnt, int k) {
+    if (root == nullptr) return -1;
+    
+    // Process left subtree.
+    int left = kthSmallestRecur(root->left, cnt, k);
+    
+    // If kth smallest is found in left 
+    // subtree, then return it.
+    if (left != -1) return left;
+    
+    // increment node count
+    cnt++;
+    
+    // If curr node is kth smallest,
+    // return it.
+    if (cnt == k) return root->data;
+    
+    // Else process the right subtree
+    // and return its value.
+    int right = kthSmallestRecur(root->right, cnt, k);
+    return right;
+}
+    int kthSmallest(Node *root, int k) {
+        // add code here.
+        int cnt = 0;
+    return kthSmallestRecur(root, cnt, k);
+    }
