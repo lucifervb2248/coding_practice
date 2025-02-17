@@ -5,4 +5,4 @@ vector<int> kLargest(vector<int>& arr, int k) {
       // store the first k element in result array
     vector<int> res(arr.begin(), arr.begin() + k);
       return res;
-    }
+}}
