@@ -1,0 +1,8 @@
+vector<int> kLargest(vector<int>& arr, int k) {
+        // Your code here
+         sort(arr.begin(), arr.end(), greater<int>());
+    
+      // store the first k element in result array
+    vector<int> res(arr.begin(), arr.begin() + k);
+      return res;
+    }
