@@ -1,0 +1,15 @@
+static int squaredDis(vector<int>& point) {
+    return point[0] * point[0] + point[1] * point[1];
+}
+
+static bool cmp (vector<int> &p1, vector<int> &p2) {
+    return squaredDis(p1) < squaredDis(p2);
+}
+
+// Function to find k closest points
+vector<vector<int>> kClosest(vector<vector<int>>& points, 
+                                                int k) {
+    
+    sort(points.begin(), points.end(), cmp);
+    return vector<vector<int>> (points.begin(), points.begin() + k);
+}
