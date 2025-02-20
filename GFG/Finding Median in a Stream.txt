@@ -1,0 +1,37 @@
+  vector<double> getMedian(vector<int> &arr) {
+        // code here
+        priority_queue<int> leftMaxHeap;
+    
+    // Min heap to store the greater half of numbers
+    priority_queue<int, vector<int>, greater<int>> rightMinHeap;
+    
+    vector<double> res;
+  
+    for (int i = 0; i < arr.size(); i++) {
+        // Insert new element into max heap
+        leftMaxHeap.push(arr[i]);
+        
+        // Move the top of max heap to min heap to maintain order
+        int temp = leftMaxHeap.top();
+        leftMaxHeap.pop();
+        rightMinHeap.push(temp);
+      
+        // Balance heaps if min heap has more elements
+        if (rightMinHeap.size() > leftMaxHeap.size()) {
+            temp = rightMinHeap.top();
+            rightMinHeap.pop();
+            leftMaxHeap.push(temp);
+        }
+        
+        // Compute median based on heap sizes
+        double median;
+        if (leftMaxHeap.size() != rightMinHeap.size())
+            median = leftMaxHeap.top();
+        else
+            median = (double)(leftMaxHeap.top() + rightMinHeap.top()) / 2;
+        
+        res.push_back(median);
+    }
+    
+    return res;
+    }
